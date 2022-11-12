@@ -1,4 +1,4 @@
-const conversions = []
+let conversions = []
 
 //url object
 const urlObject = {
@@ -60,13 +60,18 @@ const createRecord = (data) => {
     //add record
     conversions.push(record)
 
+    //append to localstorage
+    const local = JSON.parse(localStorage.getItem("conversions"))
+    if (local || local.length < 1) localStorage.setItem("conversions", JSON.stringify(record))
+    else localStorage.setItem("conversions", JSON.stringify(local.push(record)))
+
     //update table
     displayRecords()
 }
 
 const displayRecords = () => {
     //reset table
-    const table = document.querySelector(".records")
+    const table = document.querySelector("tbody")
     table.innerHTML = ""
 
     //for each conversion, create rows
@@ -98,7 +103,9 @@ document.getElementById("convert").addEventListener("click", () => {
 
 document.getElementById("showHistory").addEventListener("click", () => {
     //load history
-    conversions = JSON.parse(localStorage.getItem("conversions"))
+    const local = JSON.parse(localStorage.getItem("conversions"))
+    if (!local || local.length < 1) return
+    conversions = local
 
     //update table
     displayRecords()
