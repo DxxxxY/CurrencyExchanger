@@ -1,3 +1,5 @@
+if (!localStorage.getItem("conversions")) localStorage.setItem("conversions", JSON.stringify([]))
+
 let conversions = []
 
 //url object
@@ -62,8 +64,8 @@ const createRecord = (data) => {
 
     //append to localstorage
     const local = JSON.parse(localStorage.getItem("conversions"))
-    if (local || local.length < 1) localStorage.setItem("conversions", JSON.stringify(record))
-    else localStorage.setItem("conversions", JSON.stringify(local.push(record)))
+    local.push(record)
+    localStorage.setItem("conversions", JSON.stringify(local))
 
     //update table
     displayRecords()
@@ -103,9 +105,7 @@ document.getElementById("convert").addEventListener("click", () => {
 
 document.getElementById("showHistory").addEventListener("click", () => {
     //load history
-    const local = JSON.parse(localStorage.getItem("conversions"))
-    if (!local || local.length < 1) return
-    conversions = local
+    conversions = JSON.parse(localStorage.getItem("conversions"))
 
     //update table
     displayRecords()
