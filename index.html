@@ -23,51 +23,50 @@
                         <legend>Fill In All required fields</legend>
 
                         <div class="formline">
-                            <label for="baseCurrency">Base Currency</label>
-                            <select name="baseCurrency" id="baseCurrency">
-                                <option value="">Euro</option>
-                            </select>
+                            <div class="input">
+                                <label for="baseCurrency">Base Currency</label>
+                                <select name="baseCurrency" id="baseCurrency">
+                                </select>
+                            </div>
 
-                            <label for="toCurrency">To Currency</label>
-                            <select name="toCurrency" id="toCurrency">
-                                <option value="">US Dollar</option>
-                            </select>
+                            <div class="input">
+                                <label for="toCurrency">To Currency</label>
+                                <select name="toCurrency" id="toCurrency">
+                                </select>
+                            </div>
 
-                            <label for="baseAmount">Amount</label>
-                            <input type="number" name="amount" id="amount">
+                            <div class="input">
+                                <label for="amount">Amount</label>
+                                <input type="number" name="amount" id="amount" value="1">
+                            </div>
                         </div>
                         <div class="formline">
+                            <div class="formControls">
+                                <button id="convert">Convert</button>
+                                <button id="showHistory">Show History</button>
+                                <button id="clearHistory">Clear History</button>
+                            </div>
                         </div>
-                        <!-- <div class="formcontrols">
-                            <button id="Add" type="button">Add</button>
-                            <button id="resetbutton" type="button">Reset</button>
-                        </div> -->
                     </fieldset>
                 </form>
             </section>
-            <section id="main-section">
-                <!-- <input type="text" id="query" placeholder="Enter your query...">
-                <b class="status"></b>
+            <section class="main_section">
                 <div id="overflow">
                     <table>
                         <thead>
                             <tr>
-                                <th>Project ID</th>
-                                <th>Owner</th>
-                                <th>Title</th>
-                                <th>Category</th>
-                                <th>Hours</th>
+                                <th>From</th>
+                                <th>To</th>
                                 <th>Rate</th>
-                                <th>Status</th>
-                                <th>Short Description</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Amount</th>
+                                <th>Payment</th>
+                                <th>Date</th>
                             </tr>
                         </thead>
-                        <tbody id="table-body">
+                        <tbody class="records">
                         </tbody>
                     </table>
-                </div> -->
+                </div>
             </section>
         </section>
         <footer>
