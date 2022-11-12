@@ -53,9 +53,9 @@ const createRecord = (data) => {
     const record = {
         from,
         to,
-        rate,
+        rate: rate.toFixed(2),
         amount,
-        payment: result,
+        payment: result.toFixed(2),
         date: new Date().toLocaleString()
     }
 
@@ -114,7 +114,7 @@ document.getElementById("showHistory").addEventListener("click", () => {
 document.getElementById("clearHistory").addEventListener("click", () => {
     //clear history
     conversions = []
-    localStorage.removeItem("conversions")
+    localStorage.setItem("conversions", JSON.stringify([]))
 
     //update table
     displayRecords()
