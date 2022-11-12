@@ -6,11 +6,14 @@ const urlObject = {
     fromQry: document.getElementById("baseCurrency").value,
     toQry: document.getElementById("toCurrency").value,
     amountQry: document.getElementById("amount").value,
+
+    //update properties
     retrieveData: function() {
         this.fromQry = document.getElementById("baseCurrency").value
         this.toQry = document.getElementById("toCurrency").value
         this.amountQry = document.getElementById("amount").value
     },
+
     absoluteURL: function() {
         return `${this.mainURL}?from=${this.fromQry}&to=${this.toQry}&amount=${this.amountQry}`
     }
@@ -35,6 +38,7 @@ fetch("/json/currency.json")
         document.getElementById("toCurrency").value = "CAD"
     })
 
+//prevent default submit event
 document.addEventListener("submit", e => {
     e.preventDefault()
 })
