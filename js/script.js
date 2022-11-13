@@ -39,6 +39,7 @@ fetch("/json/currency.json")
         document.getElementById("baseCurrency").value = "CAD"
         document.getElementById("toCurrency").value = "CAD"
     })
+    .catch(err => alert(err))
 
 //prevent default submit event
 document.addEventListener("submit", e => {
