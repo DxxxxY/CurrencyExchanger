@@ -52,6 +52,31 @@ body {
     margin-top: 10px;
 }
 
+.input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 0 10px;
+    background-color: #d4d4ea;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.formline {
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.overflow {
+    max-height: 200px;
+    overflow-y: auto;
+    width: 80%;
+}
+
 header,
 footer {
     padding: 10px;
@@ -92,24 +117,6 @@ label {
     width: 75px;
     margin: 0 10px 0 0;
     text-align: right;
-}
-
-.input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 0 0 10px;
-    background-color: #d4d4ea;
-    border-radius: 10px;
-}
-
-.formline {
-    border: 1px solid gray;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 20px;
-    margin: 10px 0;
 }
 
 button {
@@ -160,10 +167,4 @@ tr {
 
 tr:nth-child(odd) {
     background-color: #bfbfbf;
-}
-
-#overflow {
-    max-height: 200px;
-    overflow-y: auto;
-    width: 100%;
 }

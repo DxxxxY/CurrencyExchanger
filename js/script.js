@@ -1,5 +1,7 @@
+//to avoid null-checking everywhere
 if (!localStorage.getItem("conversions")) localStorage.setItem("conversions", JSON.stringify([]))
 
+//array of objects
 let conversions = []
 
 //url object
@@ -16,6 +18,7 @@ const urlObject = {
         this.amountQry = document.getElementById("amount").value
     },
 
+    //construct request url
     absoluteURL: function() {
         return `${this.mainURL}?from=${this.fromQry}&to=${this.toQry}&amount=${this.amountQry}`
     }
@@ -35,9 +38,12 @@ fetch("/json/currency.json")
         const toCurrency = data.map(({ code, name }) => `<option value="${code}">${name}</option>`).join("")
         document.getElementById("toCurrency").innerHTML = toCurrency
 
-        //preprend default option (CAD)
+        //set default selected option (CAD)
         document.getElementById("baseCurrency").value = "CAD"
         document.getElementById("toCurrency").value = "CAD"
+
+        //in case no input event is triggered
+        urlObject.retrieveData()
     })
     .catch(err => alert(err))
 
@@ -92,16 +98,16 @@ const displayRecords = () => {
     })
 }
 
-document.getElementById("convert").addEventListener("click", () => {
-    //get values from input fields
+document.querySelectorAll("input, select").forEach(input => input.addEventListener("input", () => {
+    //update url object
     urlObject.retrieveData()
+}))
 
+document.getElementById("convert").addEventListener("click", () => {
     //fetch data
     fetch(urlObject.absoluteURL())
         .then(res => res.json())
-        .then(data => {
-            createRecord(data)
-        })
+        .then(data => createRecord(data))
 })
 
 document.getElementById("showHistory").addEventListener("click", () => {
